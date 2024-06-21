@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/home">
+        <ion-icon slot="icon-only" name="home"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="center-title">Create a new flashcard set</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="floating">Enter a title, like "Biology - Chapter 1"</ion-label>
+    <ion-input [(ngModel)]="title"></ion-input>
+  </ion-item>
+
+  <div *ngFor="let flashcard of flashcards; let i = index">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>{{ i + 1 }}</ion-card-title>
+        <ion-button fill="clear" color="danger" (click)="removeFlashcard(i)">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-button>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-label position="floating">Enter term</ion-label>
+          <ion-input [(ngModel)]="flashcard.term"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Enter definition</ion-label>
+          <ion-input [(ngModel)]="flashcard.definition"></ion-input>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <ion-button expand="full" color="primary" (click)="addFlashcard()">
+    <ion-icon slot="start" name="add-circle"></ion-icon>
+    Add Flashcard
+  </ion-button>
+
+  <ion-button expand="full" color="warning" (click)="createFlashcardSet()">
+    Create flashcard set
+  </ion-button>
+
+  <div *ngIf="successMessage" class="success-message">
+    {{ successMessage }}
+  </div>
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+</ion-content>

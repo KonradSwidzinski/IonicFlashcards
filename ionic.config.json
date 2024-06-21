@@ -1,0 +1,7 @@
+{
+  "name": "projektfiszki",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Flashcard Set Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="flashcard-container">
+    <div class="flashcard" [class.flipped]="isFlipped">
+      <div class="front">
+        {{ flashcards[currentFlashcardIndex]?.question }}
+      </div>
+      <div class="back">
+        {{ flashcards[currentFlashcardIndex]?.answer }}
+      </div>
+    </div>
+    <div class="footer-buttons">
+      <ion-button (click)="previousFlashcard()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+      <ion-button (click)="flipFlashcard()">
+        <ion-icon [name]="isFlipped ? 'eye-off' : 'eye'"></ion-icon>
+      </ion-button>
+      <ion-button (click)="nextFlashcard()">
+        <ion-icon name="arrow-forward"></ion-icon>
+      </ion-button>
+    </div>
+  </div>
+</ion-content>
+

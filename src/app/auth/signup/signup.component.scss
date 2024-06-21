@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap');
+
+:root {
+  --background-color: #f6f7fb;
+  --primary-color: #3a3838;
+  --secondary-color: #435cf9;
+  --highlight-color: #ffc400;
+  --button-hover-color: #ffd400;
+  --button-text-color: #ffffff;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  background-color: var(--background-color);
+}
+
+ion-header {
+  --background: #ffffff;
+  border-bottom: 1px solid #43434340;
+}
+
+ion-toolbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+ion-title {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--primary-color);
+}
+
+ion-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+form {
+  width: 100%;
+  max-width: 100%;
+}
+
+ion-item {
+  --background: transparent;
+}
+
+ion-label {
+  font-family: 'Lato', sans-serif;
+  color: var(--primary-color);
+}
+
+ion-input {
+  font-family: 'Lato', sans-serif;
+  color: var(--primary-color);
+}
+
+ion-button {
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  text-transform: none;
+  --background: #FF5733;
+  --color: var(--button-text-color);
+  --border-radius: 0.6rem;
+  --padding: 0.75rem 1.5rem;
+  --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 1rem;
+}
+
+ion-button:hover {
+  --background: var(--button-hover-color);
+}

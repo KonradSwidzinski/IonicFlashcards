@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-img src="assets/icon/logo.png" class="logo"></ion-img>
+    </ion-buttons>
+    <ion-title>Home</ion-title>
+    <ion-buttons slot="end">
+      <ion-button *ngIf="!isLoggedIn" (click)="navigateToLogin()">Login</ion-button>
+      <ion-button *ngIf="!isLoggedIn" (click)="navigateToSignUp()">Sign Up</ion-button>
+      <ion-button *ngIf="isLoggedIn" (click)="logout()">Logout</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="welcome-section">
+    <ion-img src="assets/icon/logo.png" class="welcome-logo"></ion-img>
+    <h1>Learn faster, remember better - Join us today!</h1>
+  </div>
+
+  <ion-button expand="full" (click)="navigateToCreateFlashcardSet()" class="create-flashcard-button">
+    <ion-icon slot="start" name="add-circle-outline"></ion-icon>
+    Create Flashcard Set
+  </ion-button>
+
+  <ion-list *ngIf="isLoggedIn">
+    <ion-item *ngFor="let set of flashcardSets">
+      <ion-label (click)="navigateToFlashcardSet(set.id)">
+        <span *ngIf="!set.isEditing">{{ set.name }}</span>
+        <ion-input *ngIf="set.isEditing" [(ngModel)]="set.newName"></ion-input>
+      </ion-label>
+      <ion-button *ngIf="!set.isEditing" (click)="editSetTitle(set)">
+        <ion-icon slot="icon-only" name="create-outline"></ion-icon>
+      </ion-button>
+      <ion-button *ngIf="set.isEditing" (click)="editSetTitle(set)">
+        <ion-icon slot="icon-only" name="checkmark-outline"></ion-icon>
+      </ion-button>
+      <ion-button (click)="deleteSet(set.id)">
+        <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <ion-card *ngIf="!isLoggedIn">
+    <ion-card-header>
+      <ion-card-title>Welcome to Flashcards</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Please log in to see your flashcard sets.
+    </ion-card-content>
+  </ion-card>
+</ion-content>
